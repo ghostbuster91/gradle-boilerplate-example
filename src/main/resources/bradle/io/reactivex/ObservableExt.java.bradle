@@ -1,0 +1,24 @@
+package io.reactivex;
+
+import io.reactivex.annotations.CheckReturnValue;
+import io.reactivex.annotations.SchedulerSupport;
+import io.reactivex.functions.FunctionsOut.*;
+import io.reactivex.internal.functions.FunctionsExt;
+import io.reactivex.internal.functions.ObjectHelper;
+
+public class ObservableExt {
+
+    [10..12#@SuppressWarnings("unchecked")
+    @CheckReturnValue
+    @SchedulerSupport(SchedulerSupport.NONE)
+    public static <[#T1#], R> Observable<R> combineLatest(
+            [#ObservableSource<? extends T1> source1#],
+            Function1<[#? super T1#], ? extends R> combiner) {
+        [#ObjectHelper.requireNonNull(source1, "source1 is null");
+        #
+        ]
+        return Observable.combineLatest(FunctionsExt.toFunction(combiner), Observable.bufferSize(), [#source1#]);
+    }
+    #
+    ]
+}

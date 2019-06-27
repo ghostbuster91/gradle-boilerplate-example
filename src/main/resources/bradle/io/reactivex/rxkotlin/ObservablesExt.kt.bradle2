@@ -1,0 +1,21 @@
+@file:Suppress("unused", "HasPlatformType")
+
+package io.reactivex.rxkotlin
+
+import io.reactivex.ObservableExt
+import io.reactivex.Observable
+import io.reactivex.annotations.CheckReturnValue
+import io.reactivex.annotations.SchedulerSupport
+import io.reactivex.functions.FunctionsOut.*
+
+object ObservablesExt {
+
+    [10..12#@CheckReturnValue
+    @SchedulerSupport(SchedulerSupport.NONE)
+    inline fun <[#T1#],R> combineLatest([#source1: Observable<T1>#], crossinline combineFunction: ([#T1#]) -> R) =
+            ObservableExt.combineLatest([#source1#],
+                    Function1 { [#t1: T1#]-> combineFunction([#t1#]) })
+    #
+    ]
+
+}

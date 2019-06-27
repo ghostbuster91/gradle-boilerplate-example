@@ -1,0 +1,39 @@
+package io.reactivex.internal.functions;
+
+import io.reactivex.functions.FunctionsOut.*;
+import io.reactivex.functions.Function;
+
+public final class FunctionsExt {
+
+    /** Utility class. */
+    private FunctionsExt() {
+        throw new IllegalStateException("No instances!");
+    }
+
+    [10..12#public static <[#T1#], R> Function<Object[], R> toFunction(final Function1<[#T1#], R> f) {
+        ObjectHelper.requireNonNull(f, "f is null");
+        return new Array1Func<[#T1#], R>(f);
+    }
+    #
+    ]
+
+
+   [10..12#static final class Array1Func<[#T1#], R> implements Function<Object[], R> {
+        final Function1<[#T1#], R> f;
+
+        Array1Func(Function1<[#T1#], R> f) {
+            this.f = f;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        public R apply(Object[] a) throws Exception {
+            if (a.length != 1) {
+                throw new IllegalArgumentException("Array of size 1 expected but got " + a.length);
+            }
+            return f.apply([#(T1)a[0]#]);
+        }
+    }
+    #
+    ]
+}

@@ -1,0 +1,14 @@
+package io.reactivex.functions;
+
+import io.reactivex.annotations.NonNull;
+
+public class FunctionsOut {
+
+    [10..12#public static interface Function1<[#T1#], R> {
+        @NonNull
+        R apply([#@NonNull T1 t1#]) throws Exception;
+    }
+    #
+    ]
+
+}
