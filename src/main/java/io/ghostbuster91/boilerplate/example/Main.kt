@@ -1,17 +1,19 @@
-//package io.ghostbuster91.boilerplate.example
-//
-//import io.reactivex.functions.FunctionsOut;
-//import io.reactivex.Observable
-//import io.reactivex.annotations.CheckReturnValue
-//import io.reactivex.annotations.SchedulerSupport
-//import io.reactivex.rxkotlin.ObservablesExt
-//
-//fun main() {
-//    val a = Observable.just("")
-////    Observables.combineLatest<String,String,String,String,String,String,String,String,String,String>(a,a,a,a,a,a,a,a,a,{s1, s2, s3, s4, s5, s6, s7, s8, s9 -> "" })
-////    ObservableExt.combineLatest<String,String,String,String,String,String,String,String,String,String,String>(a,a,a,a,a,a,a,a,a,a,{s1, s2, s3, s4, s5, s6, s7, s8, s9, s10 -> "" })
-//    ObservablesExt.combineLatest(a, a, a, a, a, a, a, a, a, a, Function10 { o, o2, o3, o4, o5, o6, o7, o8, o9, o10 -> ""})
-//}
+package io.ghostbuster91.boilerplate.example
+
+import io.reactivex.functions.FunctionsOut.*;
+import io.reactivex.Observable
+import io.reactivex.ObservableExt
+import io.reactivex.annotations.CheckReturnValue
+import io.reactivex.annotations.SchedulerSupport
+import io.reactivex.rxkotlin.ObservablesExt
+
+fun main() {
+    val a = Observable.just("")
+//    Observables.combineLatest<String,String,String,String,String,String,String,String,String,String>(a,a,a,a,a,a,a,a,a,{s1, s2, s3, s4, s5, s6, s7, s8, s9 -> "" })
+//    ObservableExt.combineLatest<String,String,String,String,String,String,String,String,String,String,String>(a,a,a,a,a,a,a,a,a,a,
+//        Function10{ s1, s2, s3, s4, s5, s6, s7, s8, s9, s10 -> "" })
+    ObservablesExt.combineLatest(a, a, a, a, a, a, a, a, a, a, { o, o2, o3, o4, o5, o6, o7, o8, o9, o10 -> ""})
+}
 //@CheckReturnValue
 //@SchedulerSupport(SchedulerSupport.NONE)
 //inline fun <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R> combineLatest(source1: Observable<T1>, source2: Observable<T2>,

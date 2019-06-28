@@ -36,20 +36,23 @@ sourceSets {
         kotlin.srcDir "${buildDir}/generated/src/java/"
         compileClasspath = sourceSets.main.compileClasspath
     }
+    main {
+        compileClasspath += sourceSets.generated.output
+    }
 }
 
+compileGeneratedJava.dependsOn(generateBoilerplate)
+compileGeneratedKotlin.dependsOn(generateBoilerplate)
+
 compileJava {
-    dependsOn(generateBoilerplate)
-    source    += sourceSets.generated.java
+    dependsOn(compileGeneratedJava)
 }
 
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
-    dependsOn(generateBoilerplate)
-    source    += sourceSets.generated.java
+    dependsOn(compileGeneratedKotlin)
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-compileGeneratedKotlin.dependsOn(compileGeneratedJava)
